@@ -8,9 +8,9 @@ const { Resend } = require('resend');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Supabase 配置
-const SUPABASE_URL = process.env.SUPABASE_URL || 'https://tbqxfolgydjagjjhmodq.supabase.co';
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRicXhmb2xneWRqYWdqamhtb2RxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc5NDMzNTYsImV4cCI6MjA5MzUxOTM1Nn0.iNgVXjsNiGFD_FizVfHw25P-94qFV7i19bqzY97wSmM';
+// Supabase 配置（第二套系统独立数据库）
+const SUPABASE_URL = process.env.SUPABASE_URL || 'https://uwjwlgqexmzyfblwmbuo.supabase.co';
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3andsZ3FleG16eWZibHdtYnVvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzMwNDksImV4cCI6MjA5MzY0OTA0OX0.j0za_7PB4uvS7WQPUoCypaFDYnfu74dvG053NOzMbYc';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
