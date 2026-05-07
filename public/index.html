@@ -392,11 +392,27 @@
 
     <script>
         // 页面加载完成后隐藏加载层
-        window.addEventListener('load', function() {
+        // 页面加载完成后隐藏加载层
+        function hideLoading() {
             setTimeout(function() {
                 document.getElementById('loadingOverlay').classList.add('hidden');
-            }, 500);
-        });
+            }, 300);
+        }
+
+        // 使用 DOMContentLoaded 更快隐藏加载层
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', hideLoading);
+        } else {
+            hideLoading();
+        }
+
+        // 备用：3秒后强制隐藏
+        setTimeout(function() {
+            const overlay = document.getElementById('loadingOverlay');
+            if (overlay) {
+                overlay.classList.add('hidden');
+            }
+        }, 3000);
 
         const form = document.getElementById('reservationForm');
         const phoneInput = document.getElementById('phone');
