@@ -424,6 +424,13 @@
                 return;
             }
 
+            // 验证马来西亚电话号码格式（如果填写了）
+            if (phone && !isValidMalaysiaPhone(phone)) {
+                showError('请输入有效的马来西亚电话号码（如：0123456789 或 +60123456789）');
+                return;
+            }
+            }
+
             submitBtn.disabled = true;
             submitBtn.textContent = '提交中...';
             errorMessage.style.display = 'none';
@@ -467,6 +474,19 @@
         function isValidEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
+        }
+
+        function isValidMalaysiaPhone(phone) {
+            // 移除所有空格和横杠
+            const cleanPhone = phone.replace(/[\s\-]/g, '');
+            
+            // 马来西亚手机号格式验证
+            // 格式1: 01XXXXXXXX (10-11位，以01开头)
+            // 格式2: +601XXXXXXXXX (国际格式)
+            // 格式3: 601XXXXXXXXX (不带+号的国际格式)
+            
+            const malaysiaPhoneRegex = /^(\+?6?01)[0-9]{7,9}$/;
+            return malaysiaPhoneRegex.test(cleanPhone);
         }
     </script>
 </body>
